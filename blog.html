@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Articles & Essays | Fireproof Studies</title>
+  <meta name="description" content="Long-form biblical articles and essays from Fireproof Studies exploring Scripture, theology, biblical words, church life, and theological clarity…" />
+  <meta name="author" content="James Burke" />
+  <link rel="canonical" href="https://fireproofcommentaries.org/blog" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Articles & Essays | Fireproof Studies" />
+  <meta property="og:description" content="Long-form biblical articles and essays exploring Scripture, theology, biblical words, church life, and theological clarity." />
+  <meta property="og:url" content="https://fireproofcommentaries.org/blog" />
+  <meta property="og:site_name" content="Fireproof Studies" />
+  <meta property="og:image" content="https://fireproofcommentaries.org/images/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Articles & Essays | Fireproof Studies" />
+  <meta name="twitter:description" content="Long-form biblical articles and essays exploring Scripture, theology, biblical words, church life, and theological clarity." />
+  <meta name="twitter:image" content="https://fireproofcommentaries.org/images/og-image.jpg" />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6b76;
+      --paper: #f8f4ec;
+      --paper-soft: #fffaf1;
+      --navy: #1f3347;
+      --navy-deep: #132536;
+      --gold: #c99a3d;
+      --gold-soft: #ecd7a5;
+      --burgundy: #7b2d33;
+      --line: #dfd2bd;
+      --shadow: rgba(31, 41, 51, 0.12);
+      --max: 1180px;
+      --reading: 820px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: white;
+      border-bottom: 5px solid var(--gold);
+      padding: 2.5rem 0 2rem;
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -.03em;
+    }
+
+    .site-tagline {
+      margin-top: .65rem;
+      color: var(--gold-soft);
+      font-family: system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: .04em;
+    }
+
+    .site-nav {
+      background: #182838;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+    }
+
+    .site-nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding: 1rem 0;
+    }
+
+    .site-nav a {
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: .95rem;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      color: var(--gold-soft);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(201,154,61,.18), transparent 32rem),
+        linear-gradient(180deg, #23374d 0%, #182838 100%);
+      color: white;
+      padding: 5rem 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      color: inherit;
+    }
+
+    .lead,
+    .section-intro {
+      font-size: 1.1rem;
+      max-width: 760px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.88);
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .surface-alt {
+      background: #efe7d8;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .container,
+    .container-narrow {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .container-narrow {
+      max-width: var(--reading);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .post-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .post-card,
+    .blog-preview,
+    .pathway-card,
+    .panel {
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 18px 40px var(--shadow);
+    }
+
+    .post-card {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0,0,0,.14);
+    }
+
+    .post-date {
+      font-family: system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .post-title {
+      margin: .4rem 0 1rem;
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .post-title a {
+      color: var(--navy-deep);
+      text-decoration: none;
+    }
+
+    .post-title a:hover {
+      color: var(--burgundy);
+    }
+
+    .read-more,
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .8rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .read-more,
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .read-more:hover,
+    .button-primary:hover {
+      background: var(--burgundy);
+    }
+
+    .button-secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--navy-deep);
+    }
+
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .blog-preview {
+      margin-bottom: 2rem;
+    }
+
+    .site-footer {
+      background: var(--navy-deep);
+      color: white;
+      padding: 4rem 0 2rem;
+      border-top: 5px solid var(--gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-group h3 {
+      color: var(--gold-soft);
+    }
+
+    .site-footer a {
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      color: white;
+    }
+
+    .footer-meta {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-family: system-ui, sans-serif;
+      font-size: .9rem;
+      color: rgba(255,255,255,.65);
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 3.5rem 0;
+      }
+
+      .hero {
+        padding: 4rem 0;
+      }
+
+      .post-card,
+      .blog-preview,
+      .pathway-card,
+      .panel {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E9THWFSWS0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E9THWFSWS0');
+</script>
+<script data-goatcounter="https://fireproofcommentaries.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Articles & Essays",
+  "description": "Long-form biblical articles and essays from Fireproof Studies exploring Scripture, theology, biblical words, church life, and theological clarity…",
+  "url": "https://fireproofcommentaries.org/blog",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Fireproof Studies",
+    "url": "https://fireproofcommentaries.org/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fireproof Studies"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title">Fireproof Studies</h1>
+    <p class="site-tagline">Theological infrastructure for pastors, teachers, and serious Bible students.</p>
+  </div>
+</header>
+
+ <nav class="fs-nav" aria-label="Primary Navigation">
+      <a href="/">Home</a>
+      <a href="/start-here">Start Here</a>
+      <a href="/glossary">Glossary</a>
+      <a href="/clusters">Clusters</a>
+      <a href="/blog">Articles</a>
+      <a href="/commentaries">Commentaries</a>
+      <a href="/trilogy">Trilogy</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    
+
+<main id="main-content">
+
+<section class="hero">
+  <div class="container-narrow text-center">
+    <span class="eyebrow">Articles & Essays</span>
+    <h2 class="section-title">Long-form biblical thinking for the life and teaching of the church.</h2>
+    <p class="lead">
+      These articles serve as deep-study resources for pastors, teachers, serious Bible students, and thoughtful Christians who want clarity rooted in the Word of God.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow">Featured</span>
+      <h2 class="section-title">Latest Articles</h2>
+      <p class="section-intro">
+        Essays, expositions, and theological studies from Fireproof Studies.
+      </p>
+    </div>
+
+    <div class="post-list">
+
+      <article class="post-card">
+        <p class="post-date">New Word Study · Justification</p>
+        <h3 class="post-title"><a href="/what-does-justification-mean">Justification: What Does It Mean to Be Right?</a></h3>
+        <p>
+          An accessible, scholarly study of the English and Greek word-families, establishing justification as spatial and relational at its core and grounding the believer's right standing in Christ.
+        </p>
+        <a href="/what-does-justification-mean" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Featured Study · Salvation & Election</p>
+        <h3 class="post-title"><a href="/election-fraud">Election Fraud</a></h3>
+        <p>
+          A full biblical case for grace-enabled faith, election in Christ, universal provision in the cross, and regeneration in converting union with Christ.
+        </p>
+        <a href="/election-fraud" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Latest Article · Eschatology & the Olivet Discourse</p>
+        <h3 class="post-title"><a href="/blog/how-should-we-read-matthew-24">How Should We Read Matthew 24?</a></h3>
+        <p>
+          A long-form study of the Olivet Discourse, read as a pastoral call to faithful watchfulness—working through the temple's fall, the abomination and great tribulation, the visible return, the gathering of Israel, and the meaning of “this generation.”
+        </p>
+        <a href="/blog/how-should-we-read-matthew-24" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Biblical Words & Eschatology</p>
+        <h3 class="post-title"><a href="/blog/what-did-jesus-mean-by-this-generation">What Did Jesus Mean by “This Generation”?</a></h3>
+        <p>
+          A long-form biblical-theological study recovering the covenantal, genealogical, and moral meaning of generation language in Scripture, with special attention to Matthew 24:34.
+        </p>
+        <a href="/blog/what-did-jesus-mean-by-this-generation" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Featured Article · 1 John Exposition</p>
+        <h3 class="post-title"><a href="/blog/propitiation-mercy-seat">He Is the Propitiation: Christ, Our Mercy Seat</a></h3>
+        <p>
+          A pastoral exposition of 1 John 2:1–2: Christ as our righteous Advocate and the true mercy seat, whose blood fully covers sin and satisfies God's just wrath.
+        </p>
+        <a href="/blog/propitiation-mercy-seat" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Theology & Language</p>
+        <h3 class="post-title"><a href="/blog/words">Why I Am Building a Glossary</a></h3>
+        <p>
+          A reflection on why precision in language matters, how biblical words are often misused, and why clear definitions help us speak truthfully about Christ.
+        </p>
+        <a href="/blog/words" class="read-more">Read Full Article</a>
+      </article>
+
+      <article class="post-card">
+        <p class="post-date">Scripture & Theology</p>
+        <h3 class="post-title"><a href="/blog/Bible-true">The Bible Works Because It Is True, Part II: Psalm 19:7–11</a></h3>
+        <p>
+          An exposition of Psalm 19 showing how the Word of God actively restores, stabilizes, rejoices, and clarifies—demonstrating that Scripture works because it is true.
+        </p>
+        <a href="/blog/Bible-true" class="read-more">Read Full Article</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section surface-alt">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow">Browse by Theme</span>
+      <h2 class="section-title">What Do You Want to Examine?</h2>
+    </div>
+
+    <div class="pathway-grid">
+
+      <article class="pathway-card">
+        <h3>Biblical Words</h3>
+        <p>Recovering biblical terms from modern flattening, semantic drift, and inherited misunderstandings.</p>
+        <a href="#article-list" class="button button-secondary">View Articles</a>
+      </article>
+
+      <article class="pathway-card">
+        <h3>Scripture & Theology</h3>
+        <p>Articles exploring biblical texts, doctrine, interpretation, and theological clarity.</p>
+        <a href="#article-list" class="button button-secondary">View Articles</a>
+      </article>
+
+      <article class="pathway-card">
+        <h3>Church & Ministry</h3>
+        <p>Reflections on church life, teaching, discipleship, pastoral concerns, and biblical language.</p>
+        <a href="#article-list" class="button button-secondary">View Articles</a>
+      </article>
+
+      <article class="pathway-card">
+        <h3>Culture & Discernment</h3>
+        <p>Biblical thinking about cultural pressures, doctrinal confusion, and questions facing believers today.</p>
+        <a href="#article-list" class="button button-secondary">View Articles</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="article-list">
+  <div class="container-narrow">
+
+    <div class="text-center">
+      <span class="eyebrow">Article Library</span>
+      <h2 class="section-title">All Articles</h2>
+    </div>
+
+    <article class="blog-preview">
+      <p class="post-date">Biblical Words · Justification</p>
+      <h2 class="post-title"><a href="/what-does-justification-mean">Justification: What Does It Mean to Be Right?</a></h2>
+      <p>An accessible, scholarly study of the English and Greek word-families, establishing justification as spatial and relational at its core and grounding the believer's right standing in Christ.</p>
+      <a href="/what-does-justification-mean" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Salvation & Election</p>
+      <h2 class="post-title"><a href="/election-fraud">Election Fraud</a></h2>
+      <p>A full biblical case for grace-enabled faith, election in Christ, universal provision in the cross, and regeneration in converting union with Christ.</p>
+      <a href="/election-fraud" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Eschatology & the Olivet Discourse</p>
+      <h2 class="post-title"><a href="/blog/how-should-we-read-matthew-24">How Should We Read Matthew 24?</a></h2>
+      <p>A long-form study of the Olivet Discourse as a pastoral call to faithful watchfulness—the temple's fall, the abomination and great tribulation, the visible return, the gathering of Israel, and the meaning of “this generation.”</p>
+      <a href="/blog/how-should-we-read-matthew-24" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Biblical Words & Eschatology</p>
+      <h2 class="post-title"><a href="/blog/what-did-jesus-mean-by-this-generation">What Did Jesus Mean by “This Generation”?</a></h2>
+      <p>A long-form biblical-theological study recovering the covenantal, genealogical, and moral meaning of generation language in Scripture, with special attention to Matthew 24:34.</p>
+      <a href="/blog/what-did-jesus-mean-by-this-generation" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">1 John Exposition</p>
+      <h2 class="post-title"><a href="/blog/propitiation-mercy-seat">He Is the Propitiation: Christ, Our Mercy Seat</a></h2>
+      <p>A pastoral exposition of 1 John 2:1–2: Christ as our righteous Advocate and the true mercy seat, whose blood fully covers sin and satisfies God's just wrath.</p>
+      <a href="/blog/propitiation-mercy-seat" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Theology & Language</p>
+      <h2 class="post-title"><a href="/blog/words">Why I Am Building a Glossary</a></h2>
+      <p>A reflection on the importance of precise language, biblical definitions, and the danger of using Christian words with non-biblical meanings.</p>
+      <a href="/blog/words" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Scripture & Theology</p>
+      <h2 class="post-title"><a href="/blog/Bible-true">The Bible Works Because It Is True, Part II: Psalm 19:7–11</a></h2>
+      <p>An exposition of Psalm 19 showing how the Word of God actively restores, stabilizes, rejoices, and clarifies.</p>
+      <a href="/blog/Bible-true" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Scripture & Theology</p>
+      <h2 class="post-title"><a href="/blog/Bible-works">The Bible Works Because It's True</a></h2>
+      <p>A reflection on how Scripture corresponds directly to reality.</p>
+      <a href="/blog/Bible-works" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Scripture & Theology</p>
+      <h2 class="post-title"><a href="/blog/faith">Faith Is the Evidence: Rethinking Hebrews 11:1</a></h2>
+      <p>A reflection on biblical faith as the visible outworking of revealed truth.</p>
+      <a href="/blog/faith" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Scripture & Theology</p>
+      <h2 class="post-title"><a href="/blog/renewed-mind">The Renewed Mind</a></h2>
+      <p>A standalone appendix from <em>Colony of Heaven</em> exploring sober thinking, the helmet of salvation, and the renewing work of the Word and the Spirit.</p>
+      <a href="/blog/renewed-mind" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Doctrine & Discernment</p>
+      <h2 class="post-title"><a href="/blog/leavened-lives">Leavened Lives</a></h2>
+      <p>A reflection on how small doctrinal shifts quietly reshape the life of faith.</p>
+      <a href="/blog/leavened-lives" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Church &amp; Ministry</p>
+      <h2 class="post-title"><a href="/blog/why-fireproof-churches">Why Fireproof Churches Matter</a></h2>
+      <p>The pressure to conform, compromise, or give up is immense — but the call of 1 Corinthians remains: to build a church with materials that cannot be consumed by the flames.</p>
+      <a href="/blog/why-fireproof-churches" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Teaching &amp; Church Life</p>
+      <h2 class="post-title"><a href="/blog/teaching-1-corinthians">Teaching 1 Corinthians</a></h2>
+      <p>1 Corinthians is a letter written to a church in chaos. The key to teaching it without deepening division is found in chapter one: the centrality of Christ.</p>
+      <a href="/blog/teaching-1-corinthians" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">1 Corinthians Exposition</p>
+      <h2 class="post-title"><a href="/blog/wheres-the-fire">Where’s the Fire?</a></h2>
+      <p>In 1 Corinthians 3:12–15, Paul speaks of a fire that tests the believer’s work — gold and silver, or wood, hay, and stubble. The passage behind the name Fireproof Commentaries.</p>
+      <a href="/blog/wheres-the-fire" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Romans Exposition</p>
+      <h2 class="post-title"><a href="/blog/righteousness_revealed">The Righteousness of God Revealed: Character Before Imputation</a></h2>
+      <p>What “the righteousness of God revealed” means in Romans 1, and why God’s moral consistency comes before imputation.</p>
+      <a href="/blog/righteousness_revealed" class="read-more">Read Full Article</a>
+    </article>
+
+    <article class="blog-preview">
+      <p class="post-date">Scripture &amp; Translation</p>
+      <h2 class="post-title"><a href="/blog/kjv-and-application">KJV and Application</a></h2>
+      <p>Why quote the King James Version while pressing hard into modern, practical application — and why the “old paths” and living application belong together.</p>
+      <a href="/blog/kjv-and-application" class="read-more">Read Full Article</a>
+    </article>
+
+  </div>
+</section>
+
+<section class="section-tight surface-alt">
+  <div class="container-narrow">
+    <div class="panel text-center">
+      <span class="eyebrow">Resource Cluster Seed</span>
+      <h3>From Article to Study Resource</h3>
+      <p>
+        Many Fireproof Studies articles begin as long-form essays and later grow into glossary entries, teaching handouts, videos, study guides, and Resource Clusters.
+      </p>
+      <a href="/glossary" class="button button-primary">Browse the Glossary</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-group">
+        <h3>Explore</h3>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li><a href="/start-here">Start Here</a></li>
+          <li><a href="/commentaries">Commentaries</a></li>
+          <li><a href="/trilogy">The Trilogy</a></li>
+          <li><a href="/curriculum">Curriculum</a></li>
+          <li><a href="/podcast">Podcast</a></li>
+          <li><a href="/glossary">Glossary</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-group">
+        <h3>Resources</h3>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li><a href="/blog">Blog and Articles</a></li>
+          <li><a href="/about">About the Ministry</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-group">
+        <h3>Connect</h3>
+        <p>Questions, church use inquiries, curriculum interest, or resource requests?</p>
+        <a href="/contact" class="button button-dark">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="footer-meta">
+      <p>&copy; <span id="year"></span> Fireproof Studies. All rights reserved.</p>
+      <p class="small-text">A Christ-centered resource by James Burke.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

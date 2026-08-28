@@ -1,0 +1,1229 @@
+/* =========================================================
+   FIREPROOF STUDIES
+   Master Stylesheet v1
+   Resource Cluster / Glossary / Teaching Infrastructure
+   Navy + Gold / Scholarly + Pastoral / Responsive Foundation
+   ========================================================= */
+
+/* =========================================================
+   1. DESIGN TOKENS
+   ========================================================= */
+:root {
+  /* Core palette */
+  --fs-bg: #f8f5ec;
+  --fs-surface: #ffffff;
+  --fs-surface-soft: #f1eadb;
+  --fs-surface-blue: #edf3f8;
+  --fs-text: #172033;
+  --fs-text-strong: #071426;
+  --fs-muted: #5f6875;
+
+  /* Brand colors */
+  --fs-navy: #061f3d;
+  --fs-navy-dark: #03162c;
+  --fs-navy-soft: #12385f;
+  --fs-gold: #c9972b;
+  --fs-gold-dark: #9f741e;
+  --fs-gold-soft: #ead6a4;
+  --fs-red: #7a1111;
+
+  /* Borders and shadows */
+  --fs-border: #d8d3c4;
+  --fs-border-strong: #b9af95;
+  --fs-shadow: rgba(7, 20, 38, 0.09);
+  --fs-shadow-strong: rgba(7, 20, 38, 0.18);
+
+  /* Typography */
+  --fs-font-body: Georgia, "Times New Roman", serif;
+  --fs-font-heading: Baskerville, Georgia, "Times New Roman", serif;
+  --fs-font-ui: Arial, Helvetica, sans-serif;
+
+  /* Layout widths */
+  --fs-wide: 1240px;
+  --fs-standard: 1080px;
+  --fs-narrow: 760px;
+
+  /* Spacing */
+  --fs-space-1: 0.25rem;
+  --fs-space-2: 0.5rem;
+  --fs-space-3: 0.75rem;
+  --fs-space-4: 1rem;
+  --fs-space-5: 1.5rem;
+  --fs-space-6: 2rem;
+  --fs-space-7: 3rem;
+  --fs-space-8: 4rem;
+  --fs-space-9: 5rem;
+  --fs-space-10: 6rem;
+
+  /* Radius and shadows */
+  --fs-radius-sm: 5px;
+  --fs-radius-md: 10px;
+  --fs-radius-lg: 18px;
+  --fs-radius-xl: 28px;
+
+  --fs-shadow-sm: 0 2px 8px var(--fs-shadow);
+  --fs-shadow-md: 0 10px 28px var(--fs-shadow);
+  --fs-shadow-lg: 0 18px 46px var(--fs-shadow-strong);
+
+  /* Motion */
+  --fs-transition-fast: 0.18s ease;
+  --fs-transition-base: 0.28s ease;
+}
+
+/* =========================================================
+   2. RESET + BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fs-bg);
+  color: var(--fs-text);
+  font-family: var(--fs-font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--fs-navy);
+  text-decoration: none;
+  transition: color var(--fs-transition-fast), border-color var(--fs-transition-fast), background-color var(--fs-transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--fs-gold-dark);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--fs-gold);
+  outline-offset: 3px;
+}
+
+p,
+ul,
+ol,
+blockquote {
+  margin-top: 0;
+  margin-bottom: var(--fs-space-5);
+}
+
+ul,
+ol {
+  padding-left: 1.25rem;
+}
+
+li + li {
+  margin-top: var(--fs-space-2);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--fs-border);
+  margin: var(--fs-space-8) 0;
+}
+
+main {
+  display: block;
+}
+
+/* =========================================================
+   3. TYPOGRAPHY
+   ========================================================= */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0 0 var(--fs-space-4);
+  color: var(--fs-navy);
+  font-family: var(--fs-font-heading);
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+strong {
+  color: var(--fs-text-strong);
+}
+
+.fs-eyebrow {
+  display: inline-block;
+  margin-bottom: var(--fs-space-3);
+  color: var(--fs-gold-dark);
+  font-family: var(--fs-font-ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.fs-lead {
+  color: var(--fs-text-strong);
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  line-height: 1.8;
+}
+
+.fs-muted {
+  color: var(--fs-muted);
+}
+
+.fs-small {
+  font-size: 0.9rem;
+}
+
+.fs-section-title {
+  margin-bottom: var(--fs-space-3);
+}
+
+.fs-section-intro {
+  max-width: 72ch;
+  color: var(--fs-muted);
+  font-size: 1.05rem;
+}
+
+.fs-text-center {
+  text-align: center;
+}
+
+.fs-text-center .fs-section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================
+   4. LAYOUT PRIMITIVES
+   ========================================================= */
+.fs-container {
+  width: min(100% - 2rem, var(--fs-standard));
+  margin-inline: auto;
+}
+
+.fs-container-wide {
+  width: min(100% - 2rem, var(--fs-wide));
+  margin-inline: auto;
+}
+
+.fs-container-narrow {
+  width: min(100% - 2rem, var(--fs-narrow));
+  margin-inline: auto;
+}
+
+.fs-section {
+  padding: var(--fs-space-8) 0;
+}
+
+.fs-section-tight {
+  padding: var(--fs-space-6) 0;
+}
+
+.fs-section-lg {
+  padding: var(--fs-space-10) 0;
+}
+
+.fs-stack > * + * {
+  margin-top: var(--fs-space-4);
+}
+
+.fs-grid-2,
+.fs-grid-3,
+.fs-grid-auto {
+  display: grid;
+  gap: var(--fs-space-5);
+}
+
+.fs-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fs-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fs-grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.fs-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: var(--fs-space-7);
+  align-items: center;
+}
+
+/* =========================================================
+   5. HEADER + NAVIGATION
+   ========================================================= */
+.fs-site-header {
+  background: var(--fs-navy);
+  color: #ffffff;
+  border-bottom: 4px solid var(--fs-gold);
+}
+
+.fs-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--fs-space-5);
+  padding: var(--fs-space-4) 0;
+}
+
+.fs-brand {
+  display: inline-flex;
+  flex-direction: column;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.fs-brand-title {
+  color: #ffffff;
+  font-family: var(--fs-font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fs-brand-tagline {
+  margin-top: var(--fs-space-1);
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--fs-font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+
+.fs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--fs-space-2) var(--fs-space-4);
+  font-family: var(--fs-font-ui);
+}
+
+.fs-nav a {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.fs-nav a:hover,
+.fs-nav a:focus {
+  color: var(--fs-gold-soft);
+}
+
+/* =========================================================
+   6. HERO SYSTEM
+   ========================================================= */
+.fs-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(201, 151, 43, 0.28), transparent 34%),
+    linear-gradient(135deg, var(--fs-navy-dark), var(--fs-navy));
+  color: #ffffff;
+  padding: var(--fs-space-10) 0;
+}
+
+.fs-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.fs-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: var(--fs-space-8);
+  align-items: center;
+}
+
+.fs-hero h1,
+.fs-hero h2,
+.fs-hero h3 {
+  color: #ffffff;
+}
+
+.fs-hero .fs-eyebrow {
+  color: var(--fs-gold-soft);
+}
+
+.fs-hero-title {
+  max-width: 12ch;
+  margin-bottom: var(--fs-space-4);
+}
+
+.fs-hero-subtitle {
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.18rem;
+  line-height: 1.75;
+}
+
+.fs-hero-card {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--fs-radius-xl);
+  box-shadow: var(--fs-shadow-lg);
+  backdrop-filter: blur(8px);
+}
+
+.fs-hero-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.fs-hero-card-body {
+  padding: var(--fs-space-5);
+}
+
+.fs-hero-card-title {
+  margin-bottom: var(--fs-space-2);
+  color: #ffffff;
+  font-size: 1.35rem;
+}
+
+.fs-hero-card p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* =========================================================
+   7. BUTTONS
+   ========================================================= */
+.fs-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fs-space-3);
+  align-items: center;
+  margin-top: var(--fs-space-5);
+}
+
+.fs-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--fs-space-2);
+  min-height: 44px;
+  padding: 0.82rem 1.35rem;
+  border: 2px solid transparent;
+  border-radius: var(--fs-radius-sm);
+  font-family: var(--fs-font-ui);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--fs-transition-fast), background-color var(--fs-transition-base), color var(--fs-transition-base), border-color var(--fs-transition-base), box-shadow var(--fs-transition-base);
+}
+
+.fs-button:hover {
+  transform: translateY(-1px);
+}
+
+.fs-button-primary {
+  background: var(--fs-gold);
+  color: var(--fs-navy-dark);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-button-primary:hover,
+.fs-button-primary:focus {
+  background: var(--fs-gold-soft);
+  color: var(--fs-navy-dark);
+}
+
+.fs-button-secondary {
+  background: var(--fs-surface);
+  color: var(--fs-navy);
+  border-color: var(--fs-border-strong);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-button-secondary:hover,
+.fs-button-secondary:focus {
+  background: var(--fs-surface-soft);
+  color: var(--fs-navy-dark);
+  border-color: var(--fs-gold-dark);
+}
+
+.fs-button-dark {
+  background: var(--fs-navy);
+  color: #ffffff;
+}
+
+.fs-button-dark:hover,
+.fs-button-dark:focus {
+  background: var(--fs-navy-dark);
+  color: #ffffff;
+}
+
+.fs-button-light {
+  background: var(--fs-surface);
+  color: var(--fs-navy);
+  border-color: var(--fs-border);
+}
+
+.fs-button-light:hover,
+.fs-button-light:focus {
+  border-color: var(--fs-gold);
+  color: var(--fs-gold-dark);
+}
+
+/* =========================================================
+   8. CARDS + PANELS
+   ========================================================= */
+.fs-card,
+.fs-panel,
+.fs-resource-card,
+.fs-cluster-card,
+.fs-term-card,
+.fs-download-card {
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-card,
+.fs-resource-card,
+.fs-cluster-card,
+.fs-term-card,
+.fs-download-card {
+  padding: var(--fs-space-5);
+}
+
+.fs-panel {
+  padding: var(--fs-space-6);
+}
+
+.fs-card:hover,
+.fs-resource-card:hover,
+.fs-cluster-card:hover,
+.fs-term-card:hover,
+.fs-download-card:hover {
+  box-shadow: var(--fs-shadow-md);
+}
+
+.fs-card-kicker {
+  margin-bottom: var(--fs-space-2);
+  color: var(--fs-gold-dark);
+  font-family: var(--fs-font-ui);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fs-card h3,
+.fs-resource-card h3,
+.fs-cluster-card h3,
+.fs-term-card h3,
+.fs-download-card h3 {
+  margin-bottom: var(--fs-space-3);
+}
+
+.fs-card p:last-child,
+.fs-resource-card p:last-child,
+.fs-cluster-card p:last-child,
+.fs-term-card p:last-child,
+.fs-download-card p:last-child {
+  margin-bottom: 0;
+}
+
+.fs-panel-blue {
+  background: var(--fs-surface-blue);
+}
+
+.fs-panel-gold {
+  background: linear-gradient(135deg, #fff8df, var(--fs-surface));
+  border-color: var(--fs-gold-soft);
+}
+
+.fs-panel-navy {
+  background: var(--fs-navy);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: var(--fs-navy-soft);
+}
+
+.fs-panel-navy h2,
+.fs-panel-navy h3,
+.fs-panel-navy h4 {
+  color: #ffffff;
+}
+
+/* =========================================================
+   9. HOMEPAGE SYSTEM
+   ========================================================= */
+.fs-start-path {
+  background: var(--fs-surface);
+}
+
+.fs-path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--fs-space-5);
+  margin-top: var(--fs-space-6);
+}
+
+.fs-path-card {
+  position: relative;
+  padding: var(--fs-space-6);
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-lg);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-path-number {
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: var(--fs-space-4);
+  background: var(--fs-navy);
+  color: #ffffff;
+  border-radius: 999px;
+  font-family: var(--fs-font-ui);
+  font-weight: 800;
+}
+
+.fs-featured-cluster {
+  background:
+    linear-gradient(135deg, rgba(6, 31, 61, 0.96), rgba(3, 22, 44, 0.98)),
+    radial-gradient(circle at top left, rgba(201, 151, 43, 0.22), transparent 40%);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.fs-featured-cluster h2,
+.fs-featured-cluster h3 {
+  color: #ffffff;
+}
+
+.fs-featured-cluster .fs-eyebrow {
+  color: var(--fs-gold-soft);
+}
+
+.fs-cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--fs-space-5);
+  margin-top: var(--fs-space-6);
+}
+
+.fs-cluster-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.fs-cluster-card .fs-button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.fs-cluster-status {
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: var(--fs-space-3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--fs-surface-soft);
+  color: var(--fs-muted);
+  font-family: var(--fs-font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fs-cluster-status-live {
+  background: var(--fs-gold-soft);
+  color: var(--fs-navy-dark);
+}
+
+/* =========================================================
+   10. RESOURCE CLUSTER LANDING PAGES
+   ========================================================= */
+.fs-cluster-hero {
+  background: var(--fs-navy);
+  color: #ffffff;
+  padding: var(--fs-space-9) 0;
+}
+
+.fs-cluster-hero h1,
+.fs-cluster-hero h2,
+.fs-cluster-hero h3 {
+  color: #ffffff;
+}
+
+.fs-cluster-hero .fs-lead {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.fs-cluster-hero a:not(.fs-button) {
+  color: #ffffff;
+  text-decoration-color: var(--fs-gold);
+}
+
+.fs-cluster-hero a:not(.fs-button):hover,
+.fs-cluster-hero a:not(.fs-button):focus {
+  color: var(--fs-gold-light);
+}
+
+.fs-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--fs-space-5);
+  margin-top: var(--fs-space-6);
+}
+
+.fs-resource-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-resource-card .fs-button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.fs-resource-type {
+  margin-bottom: var(--fs-space-2);
+  color: var(--fs-gold-dark);
+  font-family: var(--fs-font-ui);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fs-study-path {
+  counter-reset: study-step;
+}
+
+.fs-study-step {
+  position: relative;
+  padding: var(--fs-space-5) var(--fs-space-5) var(--fs-space-5) 4.3rem;
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-study-step + .fs-study-step {
+  margin-top: var(--fs-space-4);
+}
+
+.fs-study-step::before {
+  counter-increment: study-step;
+  content: counter(study-step);
+  position: absolute;
+  top: var(--fs-space-5);
+  left: var(--fs-space-5);
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--fs-gold);
+  color: var(--fs-navy-dark);
+  border-radius: 999px;
+  font-family: var(--fs-font-ui);
+  font-weight: 900;
+}
+
+/* =========================================================
+   11. ARTICLES
+   ========================================================= */
+.fs-article-header {
+  padding: var(--fs-space-8) 0 var(--fs-space-6);
+  background: linear-gradient(180deg, var(--fs-surface-blue), var(--fs-bg));
+  border-bottom: 1px solid var(--fs-border);
+}
+
+.fs-article-title {
+  max-width: 900px;
+}
+
+.fs-article-meta {
+  color: var(--fs-muted);
+  font-family: var(--fs-font-ui);
+  font-size: 0.92rem;
+}
+
+.fs-article-body {
+  width: min(100% - 2rem, var(--fs-narrow));
+  margin: 0 auto;
+  padding: var(--fs-space-7) 0;
+  color: var(--fs-text-strong);
+  font-size: 1.08rem;
+}
+
+.fs-article-body h2,
+.fs-article-body h3 {
+  margin-top: var(--fs-space-7);
+}
+
+.fs-scripture,
+.fs-quote {
+  margin: var(--fs-space-6) 0;
+  padding: var(--fs-space-5);
+  background: var(--fs-surface);
+  border-left: 5px solid var(--fs-gold);
+  border-radius: 0 var(--fs-radius-md) var(--fs-radius-md) 0;
+  box-shadow: var(--fs-shadow-sm);
+  color: var(--fs-text-strong);
+  font-style: italic;
+}
+
+.fs-scripture cite,
+.fs-quote cite {
+  display: block;
+  margin-top: var(--fs-space-3);
+  color: var(--fs-navy);
+  font-family: var(--fs-font-ui);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* =========================================================
+   12. GLOSSARY
+   ========================================================= */
+.fs-glossary-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(248, 245, 236, 0.94);
+  border-bottom: 1px solid var(--fs-border);
+  backdrop-filter: blur(10px);
+}
+
+.fs-glossary-toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fs-space-3);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--fs-space-4) 0;
+}
+
+.fs-search {
+  flex: 1 1 320px;
+}
+
+.fs-search input {
+  width: 100%;
+  padding: 0.82rem 1rem;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-sm);
+  background: var(--fs-surface);
+  color: var(--fs-text);
+  font-family: var(--fs-font-ui);
+  font-size: 0.95rem;
+}
+
+.fs-alpha-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.fs-alpha-nav a {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-sm);
+  background: var(--fs-surface);
+  color: var(--fs-navy);
+  font-family: var(--fs-font-ui);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.fs-alpha-nav a:hover,
+.fs-alpha-nav a.active {
+  background: var(--fs-navy);
+  color: #ffffff;
+  border-color: var(--fs-navy);
+}
+
+.fs-glossary-list {
+  display: grid;
+  gap: var(--fs-space-5);
+}
+
+.fs-glossary-entry {
+  padding: var(--fs-space-6);
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-border);
+  border-left: 5px solid var(--fs-gold);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-glossary-entry h2 {
+  margin-bottom: var(--fs-space-3);
+}
+
+.fs-definition-core {
+  color: var(--fs-text-strong);
+  font-size: 1.1rem;
+}
+
+.fs-see-also {
+  margin-top: var(--fs-space-4);
+  padding-top: var(--fs-space-4);
+  border-top: 1px solid var(--fs-border);
+  color: var(--fs-muted);
+  font-family: var(--fs-font-ui);
+  font-size: 0.92rem;
+}
+
+/* =========================================================
+   13. DOWNLOADS + FILE LISTS
+   ========================================================= */
+.fs-download-list {
+  display: grid;
+  gap: var(--fs-space-4);
+}
+
+.fs-download-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--fs-space-5);
+  align-items: center;
+  padding: var(--fs-space-5);
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-download-meta {
+  color: var(--fs-muted);
+  font-family: var(--fs-font-ui);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+.fs-site-footer {
+  margin-top: var(--fs-space-9);
+  padding: var(--fs-space-8) 0;
+  background: var(--fs-navy-dark);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.fs-site-footer h2,
+.fs-site-footer h3,
+.fs-site-footer h4 {
+  color: #ffffff;
+}
+
+.fs-site-footer a {
+  color: var(--fs-gold-soft);
+}
+
+.fs-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: var(--fs-space-6);
+}
+
+.fs-footer-bottom {
+  margin-top: var(--fs-space-7);
+  padding-top: var(--fs-space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--fs-font-ui);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* =========================================================
+   15. UTILITIES
+   ========================================================= */
+.fs-mb-0 { margin-bottom: 0; }
+.fs-mt-0 { margin-top: 0; }
+.fs-mt-4 { margin-top: var(--fs-space-4); }
+.fs-mt-5 { margin-top: var(--fs-space-5); }
+.fs-mt-6 { margin-top: var(--fs-space-6); }
+.fs-mt-7 { margin-top: var(--fs-space-7); }
+.fs-hidden { display: none !important; }
+
+/* =========================================================
+   16. RESPONSIVE
+   ========================================================= */
+@media (max-width: 960px) {
+  .fs-hero-grid,
+  .fs-split {
+    grid-template-columns: 1fr;
+  }
+
+  .fs-path-grid,
+  .fs-grid-3,
+  .fs-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fs-hero-title {
+    max-width: 16ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .fs-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fs-nav {
+    justify-content: flex-start;
+  }
+
+  .fs-path-grid,
+  .fs-grid-2,
+  .fs-grid-3,
+  .fs-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fs-button-row,
+  .fs-download-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fs-button,
+  .fs-resource-card .fs-button,
+  .fs-cluster-card .fs-button {
+    width: 100%;
+  }
+
+  .fs-hero {
+    padding: var(--fs-space-8) 0;
+  }
+
+  .fs-section,
+  .fs-section-lg {
+    padding: var(--fs-space-7) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.98rem;
+  }
+
+  .fs-brand-title {
+    font-size: 1.08rem;
+  }
+
+  .fs-nav a {
+    font-size: 0.82rem;
+  }
+
+  .fs-card,
+  .fs-resource-card,
+  .fs-cluster-card,
+  .fs-term-card,
+  .fs-download-card,
+  .fs-panel,
+  .fs-glossary-entry {
+    padding: var(--fs-space-4);
+  }
+}
+
+/* =========================================================
+   17. PRINT
+   ========================================================= */
+@media print {
+  .fs-site-header,
+  .fs-site-footer,
+  .fs-glossary-toolbar,
+  .fs-button-row,
+  .fs-button {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  .fs-card,
+  .fs-panel,
+  .fs-resource-card,
+  .fs-cluster-card,
+  .fs-glossary-entry {
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}
+
+/* Fix readable text inside dark featured cluster panels */
+.fs-featured-cluster,
+.fs-featured-cluster p,
+.fs-featured-cluster .fs-lead {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.fs-featured-cluster .fs-muted,
+.fs-featured-cluster .fs-section-intro {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.fs-featured-cluster .fs-card-kicker,
+.fs-featured-cluster .fs-eyebrow {
+  color: var(--fs-gold-soft);
+}
+.fs-glossary-actions {
+    margin-bottom: 1rem;
+}
+
+.fs-copy-definition {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--fs-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fs-text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fs-copy-definition:hover {
+    border-color: var(--fs-accent);
+    color: var(--fs-accent);
+    background: rgba(255,255,255,0.04);
+}
+
+/* =========================================================
+   14. LATE ADDITIONS
+   Classes already used in markup across the site that had
+   no rules defined. Values follow the existing token set.
+   ========================================================= */
+
+/* Subtitle beneath an article H1 (article headers, saved studies) */
+.fs-article-subtitle {
+  max-width: 760px;
+  margin-top: var(--fs-space-3);
+  color: var(--fs-muted);
+  font-family: var(--fs-font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Inline term pills — "Key Glossary Terms" blocks */
+.fs-tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--fs-border);
+  border-radius: 999px;
+  background: var(--fs-surface);
+  color: var(--fs-text);
+  font-family: var(--fs-font-ui);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: var(--fs-transition-fast);
+}
+
+.fs-tag:hover,
+.fs-tag:focus-visible {
+  border-color: var(--fs-border-strong);
+  background: var(--fs-surface-soft);
+  color: var(--fs-text-strong);
+}
+
+/* Whole-card links — route cards, related-resource grids */
+a.fs-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: var(--fs-transition-fast);
+}
+
+a.fs-card-link strong {
+  display: block;
+  margin-bottom: var(--fs-space-2);
+  color: var(--fs-text-strong);
+  font-family: var(--fs-font-heading);
+}
+
+a.fs-card-link:hover,
+a.fs-card-link:focus-visible {
+  border-color: var(--fs-border-strong);
+  box-shadow: var(--fs-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Alternate band used to close out article pages */
+.fs-surface-alt {
+  background: var(--fs-surface-soft);
+  border-top: 1px solid var(--fs-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.fs-card-link:hover,
+  a.fs-card-link:focus-visible {
+    transform: none;
+  }
+}

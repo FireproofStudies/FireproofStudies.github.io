@@ -1,0 +1,1689 @@
+/* =========================================================
+   FIREPROOF COMMENTARIES
+   Master Stylesheet v2
+   Scholarly / pastoral / expandable foundation
+   ========================================================= */
+
+/* =========================================================
+   1. DESIGN TOKENS
+   ========================================================= */
+:root {
+    /* Color palette */
+    --color-bg: #fdfcf0;
+    --color-surface: #ffffff;
+    --color-surface-alt: #f4f1de;
+    --color-surface-soft: #f9f8e8;
+    --color-text: #2f2f2f;
+    --color-text-strong: #1f1f1f;
+    --color-muted: #6b675f;
+    --color-accent: #800000;
+    --color-accent-dark: #5a0000;
+    --color-accent-soft: #a66a6a;
+    --color-gold: #d4a017;
+    --color-nav: #222222;
+    --color-nav-text: #fdfcf0;
+    --color-border: #ddd6c2;
+    --color-border-strong: #c9bea3;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --color-shadow-strong: rgba(0, 0, 0, 0.14);
+
+    /* Typography */
+    --font-body: "Georgia", "Times New Roman", serif;
+    --font-heading: "Baskerville", "Georgia", serif;
+    --font-ui: Arial, Helvetica, sans-serif;
+
+    /* Widths */
+    --container-wide: 1280px;
+    --container-standard: 1100px;
+    --container-narrow: 760px;
+
+    /* Spacing scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 5rem;
+    --space-10: 6rem;
+
+    /* Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px var(--color-shadow);
+    --shadow-md: 0 8px 24px var(--color-shadow);
+    --shadow-lg: 0 14px 36px var(--color-shadow-strong);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+/* =========================================================
+   2. RESET & BASE ELEMENTS
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-accent-dark);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+ul,
+ol {
+    margin: 0 0 var(--space-5);
+    padding-left: 1.25rem;
+}
+
+li + li {
+    margin-top: var(--space-2);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-8) 0;
+}
+
+blockquote {
+    margin: var(--space-6) 0;
+}
+
+figure {
+    margin: 0;
+}
+
+iframe {
+    max-width: 100%;
+    border: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* =========================================================
+   3. TYPOGRAPHY
+   ========================================================= */
+h1,
+h2,
+h3,
+h4 {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    color: var(--color-accent);
+}
+
+h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+h4 {
+    font-size: 1.15rem;
+}
+
+p {
+    margin: 0 0 var(--space-5);
+}
+
+strong {
+    color: var(--color-text-strong);
+}
+
+small {
+    font-size: 0.875rem;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.lead {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--color-text-strong);
+}
+
+.muted,
+.text-muted {
+    color: var(--color-muted);
+}
+
+.small-text {
+    font-size: 0.9rem;
+}
+
+.section-title {
+    margin-bottom: var(--space-3);
+}
+
+.section-intro {
+    max-width: 70ch;
+    color: var(--color-muted);
+}
+
+.scripture-block {
+    padding: var(--space-5);
+    background: var(--color-surface-soft);
+    border-left: 4px solid var(--color-accent);
+    font-style: italic;
+    color: #4d4a43;
+}
+
+.scripture-block cite {
+    display: block;
+    margin-top: var(--space-3);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+/* =========================================================
+   4. LAYOUT PRIMITIVES
+   ========================================================= */
+.container {
+    width: min(100% - 2rem, var(--container-standard));
+    margin: 0 auto;
+}
+
+.container-wide {
+    width: min(100% - 2rem, var(--container-wide));
+    margin: 0 auto;
+}
+
+.container-narrow {
+    width: min(100% - 2rem, var(--container-narrow));
+    margin: 0 auto;
+}
+
+.section {
+    padding: var(--space-8) 0;
+}
+
+.section-tight {
+    padding: var(--space-6) 0;
+}
+
+.section-lg {
+    padding: var(--space-10) 0;
+}
+
+.stack > * + * {
+    margin-top: var(--space-4);
+}
+
+.grid-2,
+.grid-3,
+.grid-auto,
+.feature-grid,
+.pathway-grid,
+.trilogy-path,
+.footer-grid,
+.book-grid,
+.resource-list,
+.episode-list,
+.post-list,
+.session-list {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-auto,
+.feature-grid,
+.pathway-grid,
+.book-grid,
+.resource-list,
+.episode-list,
+.post-list {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.trilogy-path {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.split,
+.book-hero,
+.curriculum-hero,
+.featured-block,
+.book-detail-layout {
+    display: flex;
+    gap: var(--space-7);
+    align-items: flex-start;
+}
+
+.split > * {
+    flex: 1 1 0;
+}
+
+/* =========================================================
+   5. SITE HEADER, NAV, FOOTER
+   ========================================================= */
+.site-header,
+header {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: var(--space-8) var(--space-4);
+    text-align: center;
+    border-bottom: 4px solid var(--color-accent-dark);
+}
+
+.site-title,
+header h1,
+.brand-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: 1.5px;
+    color: #ffffff;
+}
+
+.site-tagline,
+.tagline {
+    margin-top: var(--space-3);
+    color: rgba(255, 255, 255, 0.92);
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+.site-nav,
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-nav);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-nav-list,
+nav {
+    padding: var(--space-4) 0;
+    text-align: center;
+}
+
+.site-nav a,
+nav a {
+    display: inline-block;
+    margin: 0 var(--space-4);
+    color: var(--color-nav-text);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus,
+nav a:hover,
+nav a:focus {
+    color: var(--color-gold);
+}
+
+.page-header {
+    padding: var(--space-8) 0 var(--space-6);
+    text-align: center;
+}
+
+.page-header .lead,
+.collection-intro {
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-footer,
+footer {
+    background: #2d2b29;
+    color: #d6d0c2;
+    padding: var(--space-8) 0;
+    margin-top: var(--space-9);
+}
+
+.site-footer h3,
+.site-footer h4,
+footer h3,
+footer h4 {
+    color: #ffffff;
+    margin-bottom: var(--space-3);
+}
+
+.site-footer a,
+footer a {
+    color: #f0e7cf;
+}
+
+.site-footer a:hover,
+footer a:hover {
+    color: var(--color-gold);
+}
+
+.footer-group p,
+.footer-group li {
+    margin-bottom: var(--space-3);
+}
+
+.footer-meta {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    font-size: 0.9rem;
+    color: #c8c1b0;
+}
+
+/* =========================================================
+   6. BUTTONS & ACTIONS
+   ========================================================= */
+.button,
+.cta-button,
+.buy-button,
+.download-button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.button:hover,
+.cta-button:hover,
+.buy-button:hover,
+.download-button:hover {
+    transform: translateY(-1px);
+}
+
+.button-group,
+.book-actions,
+.purchase-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.button-primary,
+.cta-button {
+    background: var(--color-accent);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.button-primary:hover,
+.cta-button:hover {
+    background: var(--color-accent-dark);
+    color: #ffffff;
+}
+
+.button-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.button-secondary:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+.button-dark {
+    background: var(--color-nav);
+    color: #ffffff;
+}
+
+.button-dark:hover {
+    background: #111111;
+    color: #ffffff;
+}
+
+.button-download,
+.download-button {
+    background: var(--color-surface-alt);
+    color: var(--color-accent);
+    border-color: var(--color-border-strong);
+}
+
+.button-download:hover,
+.download-button:hover {
+    background: #ebe5c9;
+    color: var(--color-accent-dark);
+}
+
+.text-link,
+.details-link,
+.read-more,
+.contact-link {
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.text-link:hover,
+.details-link:hover,
+.read-more:hover,
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* Legacy retailer button support */
+.amazon-btn {
+    background-color: #232f3e;
+    color: #ffffff;
+}
+
+.amazon-btn:hover {
+    background-color: #1a2430;
+    color: #ffffff;
+}
+
+.ingram-btn {
+    background-color: #004a99;
+    color: #ffffff;
+}
+
+.ingram-btn:hover {
+    background-color: #003b7b;
+    color: #ffffff;
+}
+
+/* =========================================================
+   7. SURFACES: CARDS, PANELS, QUOTES
+   ========================================================= */
+.card,
+.book-card,
+.curriculum-card,
+.episode-card,
+.pathway-card,
+.post-card,
+.contact-card,
+.trilogy-step,
+.resource-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.card,
+.book-card,
+.curriculum-card,
+.episode-card,
+.pathway-card,
+.post-card,
+.contact-card,
+.trilogy-step,
+.resource-item {
+    padding: var(--space-5);
+}
+
+.card:hover,
+.book-card:hover,
+.curriculum-card:hover,
+.episode-card:hover,
+.pathway-card:hover,
+.post-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.panel,
+.purchase-box,
+.preview-box,
+.preview-text-box,
+.church-inquiries,
+.content-section {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.panel-alt,
+.highlight-band,
+.fireproof-highlight {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-7);
+}
+
+.quote-block {
+    background: var(--color-surface-soft);
+    border-left: 5px solid var(--color-accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-6);
+    color: #4c483f;
+    font-style: italic;
+    box-shadow: var(--shadow-sm);
+}
+
+.meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   8. BOOKS & TRILOGY
+   ========================================================= */
+.book-hero {
+    align-items: center;
+    margin-top: var(--space-4);
+}
+
+.book-hero-cover,
+.detail-cover {
+    flex: 0 1 340px;
+    max-width: 340px;
+}
+
+.book-hero-content,
+.detail-info {
+    flex: 1 1 0;
+}
+
+.book-title,
+.book-title-main {
+    margin-bottom: var(--space-2);
+}
+
+.book-subtitle {
+    margin-bottom: var(--space-5);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--color-muted);
+}
+
+.book-hook {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--color-text-strong);
+}
+
+.book-card,
+.curriculum-card {
+    text-align: center;
+}
+
+.book-card-title,
+.curriculum-title {
+    margin-bottom: var(--space-3);
+}
+
+.book-card-series,
+.series-tag,
+.curriculum-meta {
+    margin-bottom: var(--space-4);
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.book-card-cover,
+.cover-img,
+.cover-img-large {
+    margin: 0 auto var(--space-4);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    background: #ece9dc;
+}
+
+.cover-img {
+    width: 100%;
+    max-width: 240px;
+    height: 350px;
+    object-fit: contain;
+}
+
+.cover-img-large {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+}
+
+.purchase-box h3,
+.preview-box h3,
+.preview-text-box h3 {
+    margin-bottom: var(--space-4);
+}
+
+.trilogy-step h3 {
+    margin-bottom: var(--space-3);
+}
+
+.trilogy-step p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   9. CURRICULUM
+   ========================================================= */
+.curriculum-hero {
+    align-items: center;
+}
+
+.included-list {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.session-list {
+    grid-template-columns: 1fr;
+}
+
+.session-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+}
+
+.resource-list {
+    grid-template-columns: 1fr;
+}
+
+.resource-item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-5);
+    align-items: center;
+}
+
+.resource-meta {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+/* =========================================================
+   10. PODCAST
+   ========================================================= */
+.podcast-hero {
+    text-align: center;
+}
+
+.start-here-block {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+}
+
+.episode-card h3 {
+    margin-bottom: var(--space-3);
+}
+
+.episode-meta {
+    margin-bottom: var(--space-3);
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   11. HUBS & PATHWAYS
+   ========================================================= */
+.collection-intro {
+    margin-bottom: var(--space-6);
+}
+
+.featured-block {
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.pathway-card h3 {
+    margin-bottom: var(--space-3);
+}
+
+/* =========================================================
+   12. BLOG & ARTICLES
+   ========================================================= */
+.blog-preview {
+    margin-bottom: var(--space-7);
+}
+
+.post-date {
+    margin-bottom: var(--space-2);
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.post-title,
+.blog-preview h2 {
+    margin-bottom: var(--space-3);
+}
+
+.blog-preview h2 a,
+.post-title a {
+    color: var(--color-accent);
+}
+
+.blog-preview h2 a:hover,
+.post-title a:hover {
+    text-decoration: underline;
+}
+
+.article-container,
+.article-body {
+    max-width: var(--container-narrow);
+}
+
+.article-header {
+    padding-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.article-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+}
+
+.article-meta {
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+}
+
+.article-body {
+    font-size: 1.1rem;
+    color: var(--color-text-strong);
+}
+
+.article-body p,
+.article-body ul,
+.article-body ol,
+.article-body blockquote {
+    margin-bottom: var(--space-5);
+}
+
+.blog-footer {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Legacy blog quote class retained */
+.scripture-quote {
+    font-style: italic;
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-6) 0;
+    color: #555046;
+    background: var(--color-surface-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* =========================================================
+   13. ABOUT & MISSION
+   ========================================================= */
+.mission-block,
+.bio-block,
+.story-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   14. CONTACT
+   ========================================================= */
+.contact-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin: var(--space-7) 0;
+}
+
+.contact-card {
+    text-align: center;
+    border-top: 4px solid var(--color-accent);
+}
+
+address {
+    margin-top: var(--space-3);
+    font-style: normal;
+    line-height: 1.7;
+    color: var(--color-muted);
+}
+
+/* =========================================================
+   15. LEGACY / COMPATIBILITY CLASSES
+   ========================================================= */
+main {
+    max-width: var(--container-standard);
+    margin: var(--space-8) auto;
+    padding: 0 1rem;
+}
+
+section {
+    margin-bottom: var(--space-8);
+}
+
+.hero {
+    background-color: var(--color-surface-alt);
+    padding: var(--space-9) 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.philosophy-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+}
+
+.philosophy-item h3 {
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-4);
+}
+
+.fireproof-highlight {
+    color: #ffffff;
+    background-color: var(--color-accent);
+    text-align: center;
+}
+
+.fireproof-highlight h3 {
+    color: #ffdf75;
+}
+
+.featured-curriculum {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    background: var(--color-surface);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.curriculum-image {
+    flex: 1 1 240px;
+    min-width: 220px;
+    max-width: 320px;
+}
+
+.curriculum-text {
+    flex: 2 1 340px;
+    min-width: 280px;
+}
+
+.navigation-footer {
+    margin-top: var(--space-7);
+    font-weight: 700;
+}
+
+/* =========================================================
+   16. UTILITIES
+   ========================================================= */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.pt-0 {
+    padding-top: 0;
+}
+
+.pb-0 {
+    padding-bottom: 0;
+}
+
+.surface-alt {
+    background: var(--color-surface-alt);
+}
+
+.surface-soft {
+    background: var(--color-surface-soft);
+}
+
+/* =========================================================
+   17. RESPONSIVE
+   ========================================================= */
+@media (max-width: 980px) {
+    .grid-3,
+    .trilogy-path,
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .book-hero,
+    .curriculum-hero,
+    .featured-block,
+    .book-detail-layout,
+    .split {
+        flex-direction: column;
+    }
+
+    .book-hero-cover,
+    .detail-cover {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 760px) {
+    .grid-2,
+    .grid-3,
+    .grid-auto,
+    .feature-grid,
+    .pathway-grid,
+    .book-grid,
+    .post-list,
+    .episode-list,
+    .trilogy-path,
+    .footer-grid,
+    .contact-methods,
+    .philosophy-section {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button-group,
+    .book-actions,
+    .purchase-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button,
+    .cta-button,
+    .buy-button,
+    .download-button {
+        width: 100%;
+    }
+
+    .site-nav a,
+    nav a {
+        margin: 0 var(--space-2);
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-header,
+    header {
+        padding: var(--space-7) var(--space-4);
+    }
+
+    .site-title,
+    header h1,
+    .brand-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .site-tagline,
+    .tagline {
+        font-size: 0.95rem;
+    }
+
+    .site-nav,
+    nav {
+        position: static;
+    }
+
+    .site-nav-list,
+    nav {
+        padding: var(--space-3) 0;
+    }
+
+    .site-nav a,
+    nav a {
+        display: inline-block;
+        margin: var(--space-2) var(--space-2);
+    }
+
+    .hero {
+        padding: var(--space-7) 1rem;
+    }
+
+    .panel,
+    .panel-alt,
+    .purchase-box,
+    .preview-box,
+    .preview-text-box,
+    .content-section,
+    .quote-block,
+    .card,
+    .book-card,
+    .curriculum-card,
+    .episode-card,
+    .pathway-card,
+    .post-card,
+    .resource-item,
+    .session-item {
+        padding: var(--space-5);
+    }
+}
+/* =========================================================
+   HIDDEN TEST READER PAGE
+   Where to Stand for Teens
+   ========================================================= */
+
+.test-reader-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.test-reader-page section {
+    margin-bottom: 0;
+}
+
+.test-reader-hero {
+    background:
+        linear-gradient(rgba(253, 252, 240, 0.92), rgba(244, 241, 222, 0.96)),
+        radial-gradient(circle at top left, rgba(212, 160, 23, 0.18), transparent 42%);
+    padding: var(--space-10) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.test-reader-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+    gap: var(--space-8);
+    align-items: center;
+}
+
+.test-reader-hero h1 {
+    font-size: clamp(2.6rem, 5vw, 4.25rem);
+    margin-bottom: var(--space-4);
+}
+
+.test-reader-hero .lead {
+    max-width: 58ch;
+    font-size: 1.25rem;
+}
+
+.test-reader-note {
+    margin-top: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-surface-soft);
+    border-left: 5px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    color: var(--color-text-strong);
+}
+
+.test-reader-cover {
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.test-reader-cover img {
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.download-panel {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.test-download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 230px;
+    padding: 1.15rem 2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.test-download-button.primary {
+    background: var(--color-accent);
+    color: #ffffff;
+    border: 2px solid var(--color-accent);
+}
+
+.test-download-button.primary:hover {
+    background: var(--color-accent-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.test-download-button.secondary {
+    background: #ffffff;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.test-download-button.secondary:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.test-section-soft {
+    background: var(--color-surface-soft);
+}
+
+.test-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-7);
+    box-shadow: var(--shadow-md);
+}
+
+.feedback-list {
+    columns: 2;
+    column-gap: var(--space-7);
+    margin-top: var(--space-4);
+}
+
+.feedback-list li {
+    break-inside: avoid;
+    margin-bottom: var(--space-3);
+}
+
+.form-frame {
+    margin-top: var(--space-5);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-backup-link {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.private-note {
+    text-align: center;
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 820px) {
+    .test-reader-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .test-reader-hero .lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .test-reader-note {
+        text-align: left;
+    }
+
+    .test-reader-cover {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .download-panel {
+        justify-content: center;
+    }
+
+    .test-download-button {
+        width: 100%;
+    }
+
+    .feedback-list {
+        columns: 1;
+    }
+}
+/* =========================================================
+   19. FINAL CLEANUP / PRODUCTION OVERRIDES
+   ========================================================= */
+
+/* Center section intros under centered headings */
+.section-intro {
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-muted);
+}
+
+/* Better button alignment */
+.button-group,
+.book-actions,
+.purchase-links {
+    align-items: center;
+}
+
+.button-group-center {
+    justify-content: center;
+}
+
+/* Make secondary buttons work properly when paired with .button */
+.button.button-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.button.button-secondary:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+/* Ensure all flex-layout children behave consistently */
+.split > *,
+.book-hero > *,
+.curriculum-hero > *,
+.featured-block > *,
+.book-detail-layout > * {
+    flex: 1 1 0;
+}
+
+/* Better alignment for featured homepage blocks */
+.featured-block {
+    align-items: center;
+}
+
+/* Keep pathway cards balanced */
+.pathway-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.pathway-card .button,
+.pathway-card .cta-button,
+.pathway-card .buy-button,
+.pathway-card .download-button {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Avoid global section margins interfering with modern page sections */
+main > .section,
+main > .section-tight,
+main > .section-lg,
+main > .hero {
+    margin-bottom: 0;
+}
+
+/* Let modern pages breathe full-width inside the body */
+body > main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Preserve legacy centered content when needed */
+.legacy-main {
+    max-width: var(--container-standard);
+    margin: var(--space-8) auto;
+    padding: 0 1rem;
+}
+
+/* Mobile pathway buttons should stretch */
+@media (max-width: 760px) {
+    .pathway-card .button,
+    .pathway-card .cta-button,
+    .pathway-card .buy-button,
+    .pathway-card .download-button {
+        align-self: stretch;
+    }
+}
+/* =========================================================
+   GLOSSARY & READING EXPERIENCE ENHANCEMENTS
+   ========================================================= */
+
+/* 1. Reading Progress Bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--color-accent);
+  z-index: 1001;
+  transition: width 0.15s ease-out;
+  box-shadow: 0 1px 2px var(--color-shadow);
+}
+
+/* 2. Search & Toolbar Enhancements */
+.glossary-search input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.glossary-search input:focus {
+  outline: 2px solid var(--color-gold);
+  border-color: transparent;
+}
+
+/* 3. Alphabet Nav Active State */
+.alphabet-nav a.active {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+
+/* 4. Copy Button */
+.copy-term-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-right: var(--space-3);
+}
+.copy-term-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.copy-term-btn.copied {
+  border-color: #2e7d32;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.06);
+}
+
+/* 5. Resume Banner */
+.resume-banner {
+  position: fixed;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-5);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--color-text-strong);
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 999;
+  pointer-events: none;
+}
+.resume-banner.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.resume-btn, .resume-dismiss {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  transition: color var(--transition-fast);
+}
+.resume-btn {
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  width: 1.8rem;
+  height: 1.8rem;
+  font-weight: 700;
+}
+.resume-btn:hover { background: var(--color-accent-dark); }
+.resume-dismiss { color: var(--color-muted); font-size: 1.1rem; padding: 0 var(--space-1); }
+.resume-dismiss:hover { color: var(--color-text-strong); }
+
+/* 6. Glossary Tooltip */
+.glossary-tooltip {
+  position: fixed;
+  z-index: 1002;
+  max-width: 320px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text-strong);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.glossary-tooltip.visible { opacity: 1; transform: translateY(0); }
+.glossary-tooltip strong { display: block; margin-bottom: var(--space-2); color: var(--color-accent); }
+.glossary-tooltip small { display: block; margin-top: var(--space-2); color: var(--color-muted); font-size: 0.8rem; }
+.glossary-tooltip a { color: var(--color-accent); text-decoration: underline; pointer-events: auto; }
+
+/* 7. Theme & Focus Toggles */
+.theme-toggle, .focus-toggle {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  margin-left: var(--space-3);
+}
+.theme-toggle:hover, .focus-toggle:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-soft);
+}
+.focus-toggle.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* 8. Focus Mode Overrides */
+html.focus-mode .site-header,
+html.focus-mode .site-nav,
+html.focus-mode .site-footer,
+html.focus-mode .reading-progress,
+html.focus-mode .glossary-toolbar,
+html.focus-mode .copy-term-btn,
+html.focus-mode .back-to-top,
+html.focus-mode .resume-banner { display: none !important; }
+
+html.focus-mode main {
+  max-width: var(--container-narrow);
+  margin: var(--space-8) auto;
+  padding: 0 var(--space-5);
+}
+html.focus-mode .glossary-entry {
+  box-shadow: none !important;
+  border-left: none !important;
+  border: 1px solid var(--color-border) !important;
+  margin-bottom: var(--space-7) !important;
+  padding: var(--space-7) !important;
+}
+html.focus-mode .glossary-definition { font-size: 1.15rem !important; line-height: 1.65 !important; }
+
+/* 9. Dark Mode Overrides (Global) */
+:root {
+  --color-surface-dark: #1a1a1a;
+  --color-surface-soft-dark: #242424;
+  --color-text-strong-dark: #e8e6e1;
+  --color-text-dark: #c4c2bc;
+  --color-border-dark: #3a3a3a;
+  --color-muted-dark: #9a9893;
+  --color-accent-dark-mode: #c24d4d; /* Lighter red for contrast */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) {
+    --color-bg: #121212;
+    --color-surface: var(--color-surface-dark);
+    --color-surface-soft: var(--color-surface-soft-dark);
+    --color-text: var(--color-text-dark);
+    --color-text-strong: var(--color-text-strong-dark);
+    --color-muted: var(--color-muted-dark);
+    --color-border: var(--color-border-dark);
+    --color-accent: var(--color-accent-dark-mode);
+    --color-accent-dark: #a33a3a;
+    --color-shadow: rgba(255,255,255,0.05);
+    --color-shadow-strong: rgba(255,255,255,0.1);
+  }
+}
+
+html.dark-mode {
+  --color-bg: #121212;
+  --color-surface: var(--color-surface-dark);
+  --color-surface-soft: var(--color-surface-soft-dark);
+  --color-text: var(--color-text-dark);
+  --color-text-strong: var(--color-text-strong-dark);
+  --color-muted: var(--color-muted-dark);
+  --color-border: var(--color-border-dark);
+  --color-accent: var(--color-accent-dark-mode);
+  --color-accent-dark: #a33a3a;
+  --color-shadow: rgba(255,255,255,0.05);
+  --color-shadow-strong: rgba(255,255,255,0.1);
+}
+
+/* 10. Print Styles */
+.print-header { display: none; }
+@media print {
+  .site-header, .site-nav, .glossary-toolbar, .site-footer, 
+  .copy-term-btn, .back-to-top, .resume-banner, .theme-toggle, .focus-toggle { display: none !important; }
+  .print-header { 
+    display: block !important; text-align: center; margin-bottom: 2rem; 
+    padding-bottom: 1rem; border-bottom: 2px solid #222; font-size: 0.9rem; color: #333;
+  }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; line-height: 1.35; }
+  .glossary-page .hero { background: none !important; padding: 0.5rem 0 !important; }
+  .glossary-entry { break-inside: avoid; page-break-inside: avoid; box-shadow: none !important; border: 1px solid #ccc !important; margin-bottom: 1rem !important; padding: 0.8rem !important; }
+  a { text-decoration: none !important; color: #000 !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #555; }
+}

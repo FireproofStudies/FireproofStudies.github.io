@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Steer search engines to the HTML pages, not the raw PDF files.
+# Every PDF (articles, handouts, leader sheets, workbooks) has an HTML
+# home (an article or a hub/landing page) that is richer and cross-linked.
+# PDFs remain fully downloadable for users via those pages.
+Disallow: /*.pdf$
+
+Sitemap: https://fireproofcommentaries.org/sitemap.xml
