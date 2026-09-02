@@ -54,8 +54,22 @@
     .visuals-band { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(17rem,.65fr); gap:2rem; align-items:center; padding:2rem; border:1px solid var(--fs-border); border-radius:var(--fs-radius-lg); background:linear-gradient(135deg,#081d4b 0%,#102b64 65%,#4a2675 100%); color:#fff; box-shadow:var(--fs-shadow-md); }
     .visuals-band h2,.visuals-band p { color:#fff; }
     .visuals-band .visuals-mark { display:flex; min-height:10rem; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.35); border-radius:var(--fs-radius-lg); background:rgba(255,255,255,.09); font-family:var(--fs-font-ui); font-weight:900; font-size:clamp(2rem,5vw,4rem); letter-spacing:-.04em; text-align:center; }
+    .competition-band { overflow:hidden; display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr); border:1px solid #d9b85f; border-radius:var(--fs-radius-lg); background:#fffaf0; box-shadow:var(--fs-shadow-md); }
+    .competition-art { position:relative; min-height:23rem; background:#081d4b; }
+    .competition-art img { width:100%; height:100%; object-fit:cover; object-position:center; }
+    .competition-art::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(8,29,75,.08),rgba(8,29,75,0)); pointer-events:none; }
+    .competition-copy { padding:clamp(1.5rem,4vw,2.75rem); align-self:center; }
+    .competition-copy h2 { margin:.5rem 0 .65rem; }
+    .competition-teams { display:flex; flex-wrap:wrap; gap:.65rem; margin:1.2rem 0; }
+    .competition-team { display:inline-flex; align-items:center; min-height:2.4rem; padding:.5rem .85rem; border-radius:999px; color:#fff; font-family:var(--fs-font-ui); font-weight:850; letter-spacing:.02em; }
+    .competition-team:first-child { background:#2458a6; }
+    .competition-team:last-child { background:#d9681e; }
+    .competition-features { margin:1.15rem 0 1.5rem; padding:0; list-style:none; display:grid; gap:.55rem; }
+    .competition-features li { position:relative; padding-left:1.65rem; }
+    .competition-features li::before { content:"\2713"; position:absolute; left:0; top:.05rem; width:1.15rem; height:1.15rem; border-radius:50%; background:#08796b; color:#fff; font-size:.76rem; line-height:1.15rem; text-align:center; font-weight:900; }
+    .competition-note { margin-top:1rem; color:var(--fs-muted); font-size:.9rem; }
     .review-note { border-left:5px solid var(--fs-gold); background:var(--fs-surface-alt); padding:1rem 1.25rem; }
-    @media (max-width:850px) { .found-path { grid-template-columns:repeat(2,1fr); } .visuals-band { grid-template-columns:1fr; } }
+    @media (max-width:850px) { .found-path { grid-template-columns:repeat(2,1fr); } .visuals-band,.competition-band { grid-template-columns:1fr; } .competition-art { min-height:19rem; } }
     @media (max-width:640px) { .found-path,.session-list { grid-template-columns:1fr; } }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -108,6 +122,32 @@
           <div class="fs-button-row"><a class="fs-button fs-button-primary" href="#sessions">Choose a Session Deck</a></div>
         </div>
         <div class="visuals-mark" aria-label="Thirteen complete presentation decks">13<br>DECKS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fs-section fs-surface-alt" id="classroom-competition">
+    <div class="fs-container-wide">
+      <div class="competition-band">
+        <div class="competition-art">
+          <img loading="lazy" decoding="async" src="/rc3/09_Youth_Resources/Found/Competition/Found-Journey-Home-Map-Web-v1.jpg" alt="Two roads crossing a biblical landscape and converging at a welcoming house in the light">
+        </div>
+        <div class="competition-copy">
+          <span class="fs-eyebrow">Printable Classroom Engagement Pack</span>
+          <h2 class="fs-section-title">Wayfinders vs. Trailblazers</h2>
+          <p>Turn preparation, participation, welcome, and teamwork into visible progress along <strong>The Journey Home</strong>. Two teams build their routes across the bulletin board, a monthly winner chooses the menu, and everyone shares the celebration meal.</p>
+          <div class="competition-teams" aria-label="Competition teams"><span class="competition-team">Wayfinders</span><span class="competition-team">Trailblazers</span></div>
+          <ul class="competition-features">
+            <li>Leader-ready rules, scoring plan, fairness safeguards, and monthly score sheets</li>
+            <li>Thirty pages of coordinated banners, team emblems, route pieces, landmarks, and winner pennants</li>
+            <li>A nine-page illustrated map that assembles into an approximately 30 by 20 inch centerpiece</li>
+          </ul>
+          <div class="fs-button-row">
+            <a class="fs-button fs-button-primary" href="/rc3/09_Youth_Resources/Found/Competition/Found-Wayfinders-Trailblazers-Competition-Guide.pdf" download>Download the Leader Guide</a>
+            <a class="fs-button fs-button-secondary" href="/rc3/09_Youth_Resources/Found/Competition/Found-Journey-Home-Printable-Board-Decorations.pdf" download>Download the Decorations</a>
+          </div>
+          <p class="competition-note">Print decorations on white cardstock at Actual Size or 100% for clean cutting and accurate map assembly.</p>
+        </div>
       </div>
     </div>
   </section>
