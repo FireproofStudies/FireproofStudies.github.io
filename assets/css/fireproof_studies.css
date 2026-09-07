@@ -798,6 +798,92 @@ strong {
   gap: 0.2rem 0.35rem;
 }
 
+.fs-article-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.8rem;
+  margin-top: var(--fs-space-4);
+}
+
+.fs-share-heading {
+  color: var(--fs-muted);
+  font-family: var(--fs-font-ui);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fs-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fs-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--fs-border-strong);
+  border-radius: 999px;
+  background: var(--fs-surface);
+  color: var(--fs-navy);
+  font-family: var(--fs-font-ui);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: var(--fs-shadow-sm);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+
+.fs-share-button:hover,
+.fs-share-button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: var(--fs-shadow-md);
+  text-decoration: none;
+}
+
+.fs-share-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--fs-gold) 60%, transparent);
+  outline-offset: 2px;
+}
+
+.fs-share-button-native {
+  border-color: var(--fs-navy);
+  background: var(--fs-navy);
+  color: #fff;
+}
+
+.fs-share-button-facebook {
+  border-color: #1877f2;
+  background: #1877f2;
+  color: #fff;
+}
+
+.fs-share-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1rem;
+  margin-right: 0.35rem;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+@media (max-width: 520px) {
+  .fs-share-heading {
+    width: 100%;
+  }
+
+  .fs-share-button {
+    min-height: 2.55rem;
+  }
+}
+
 .fs-article-body {
   width: min(100% - 2rem, var(--fs-narrow));
   margin: 0 auto;
