@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The World of Daughter of Jezebel</title><style>html,body{margin:0;overflow:hidden;background:#ead9b9}body{--foreground:#2b241e;--card:#f5e9cf;--muted-foreground:#66594c;--blue:#315d70;--orange:#a96c3f;--border:#8a765e;--red:#8d3029;--yellow:#cda84b}</style></head><body>
+<div id="doj-map">
+  <style>
+    #doj-map { color:var(--foreground); font-family:Georgia,serif; }
+    #doj-map .map-wrap { position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; background:color-mix(in srgb,var(--card) 82%,var(--yellow) 18%); }
+    #doj-map svg { display:block; width:100%; height:100%; }
+    #doj-map .title { font-family:Georgia,serif; font-size:22px; font-weight:500; letter-spacing:2px; fill:var(--foreground); }
+    #doj-map .subtitle { font-family:system-ui,sans-serif; font-size:11px; letter-spacing:1.5px; fill:var(--muted-foreground); }
+    #doj-map .land { fill:color-mix(in srgb,var(--card) 72%,var(--yellow) 28%); stroke:color-mix(in srgb,var(--orange) 35%,var(--border)); stroke-width:1.4; }
+    #doj-map .sea { fill:color-mix(in srgb,var(--card) 60%,var(--blue) 40%); }
+    #doj-map .water { fill:color-mix(in srgb,var(--card) 48%,var(--blue) 52%); stroke:color-mix(in srgb,var(--blue) 70%,var(--border)); stroke-width:1.3; }
+    #doj-map .terrain { fill:none; stroke:color-mix(in srgb,var(--orange) 42%,transparent); stroke-width:1.4; }
+    #doj-map .kingdom { font-family:Georgia,serif; font-size:16px; letter-spacing:4px; fill:color-mix(in srgb,var(--foreground) 70%,transparent); }
+    #doj-map .region { font-family:Georgia,serif; font-size:12px; font-style:italic; fill:var(--muted-foreground); }
+    #doj-map .place-label { font-family:system-ui,sans-serif; font-size:12px; font-weight:500; fill:var(--foreground); paint-order:stroke; stroke:var(--card); stroke-width:4px; stroke-linejoin:round; }
+    #doj-map .minor-label { font-family:system-ui,sans-serif; font-size:11px; fill:var(--muted-foreground); paint-order:stroke; stroke:var(--card); stroke-width:4px; }
+    #doj-map .place { fill:var(--foreground); stroke:var(--card); stroke-width:2; }
+    #doj-map .capital { fill:var(--red); stroke:var(--card); stroke-width:2.4; }
+    #doj-map .uncertain { fill:var(--yellow); stroke:var(--foreground); stroke-width:1.3; }
+    #doj-map .route { fill:none; stroke:var(--red); stroke-width:2; stroke-dasharray:6 5; opacity:.72; }
+    #doj-map .route-secondary { fill:none; stroke:var(--blue); stroke-width:1.7; stroke-dasharray:3 5; opacity:.65; }
+    #doj-map .frame { fill:none; stroke:color-mix(in srgb,var(--red) 72%,var(--foreground)); stroke-width:5; }
+    #doj-map .inner-frame { fill:none; stroke:color-mix(in srgb,var(--blue) 68%,var(--foreground)); stroke-width:2; }
+    #doj-map .legend { font-family:system-ui,sans-serif; font-size:11px; fill:var(--muted-foreground); }
+    #doj-map .compass { fill:var(--foreground); }
+    #doj-map .border-band { fill:color-mix(in srgb,var(--card) 68%,var(--yellow) 32%); stroke:color-mix(in srgb,var(--red) 66%,var(--foreground)); stroke-width:2; }
+    #doj-map .orn-red { fill:color-mix(in srgb,var(--red) 76%,var(--foreground)); }
+    #doj-map .orn-blue { fill:color-mix(in srgb,var(--blue) 74%,var(--foreground)); }
+    #doj-map .orn-gold { fill:color-mix(in srgb,var(--yellow) 78%,var(--foreground)); }
+    #doj-map .orn-line { fill:none; stroke:color-mix(in srgb,var(--foreground) 62%,transparent); stroke-width:2; }
+    #doj-map .plaster { fill:var(--card); opacity:.20; mix-blend-mode:multiply; pointer-events:none; }
+    #doj-map .title-rule { stroke:color-mix(in srgb,var(--red) 65%,var(--foreground)); stroke-width:2; }
+  </style>
+  <div class="map-wrap">
+    <svg role="img" aria-labelledby="doj-map-title doj-map-desc" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid meet">
+      <title id="doj-map-title">The world of Daughter of Jezebel</title>
+      <desc id="doj-map-desc">A regional map of Judah, Israel, Phoenicia, Gilead, and Edom showing principal locations in the novel. The ascent of Gur and Zair are marked as approximate.</desc>
+      <defs>
+        <filter id="plaster-noise" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency=".018 .055" numOctaves="3" seed="17" result="noise"/>
+          <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
+          <feBlend in="SourceGraphic" in2="gray" mode="multiply"/>
+        </filter>
+        <pattern id="top-ornament" width="96" height="48" patternUnits="userSpaceOnUse">
+          <rect class="border-band" width="96" height="48"/>
+          <circle class="orn-blue" cx="24" cy="24" r="14"/>
+          <circle class="orn-gold" cx="24" cy="24" r="7"/>
+          <path class="orn-red" d="M58 38 Q66 17 74 38 Q68 29 66 10 Q64 29 58 38Z"/>
+          <path class="orn-blue" d="M48 38 Q58 27 66 38 Q57 36 48 38Z M66 38 Q75 27 84 38 Q75 36 66 38Z"/>
+        </pattern>
+        <pattern id="side-ornament" width="48" height="96" patternUnits="userSpaceOnUse">
+          <rect class="border-band" width="48" height="96"/>
+          <circle class="orn-blue" cx="24" cy="24" r="14"/>
+          <circle class="orn-gold" cx="24" cy="24" r="7"/>
+          <path class="orn-red" d="M14 82 Q24 55 34 82 Q27 69 24 48 Q21 69 14 82Z"/>
+          <path class="orn-blue" d="M5 82 Q15 68 24 82 Q14 79 5 82Z M24 82 Q33 68 43 82 Q33 79 24 82Z"/>
+        </pattern>
+      </defs>
+      <rect class="sea" x="20" y="20" width="760" height="960"/>
+      <g id="map-land">
+<path class="land" d="M497.6,402.4 L469.9,461.0 L413.3,435.2 L380.5,559.0 L419.6,579.6 L379.4,605.0 L372.6,653.6 L446.7,628.7 L450.7,700.2 L372.1,990.9 L356.8,944.1 L269.1,678.2 L314.4,617.7 L303.6,607.1 L345.5,520.8 L377.2,380.2 L399.8,333.0 L404.3,331.1 L456.9,331.4 L471.0,298.4 L513.4,295.9 L515.7,372.6 L494.2,401.1 L497.6,402.4 Z"/>
+<path class="land" d="M513.4,295.9 L471.0,298.4 L456.9,331.4 L404.3,331.1 L460.3,177.5 L538.3,43.6 L541.1,36.9 L611.8,46.9 L637.3,121.3 L551.9,192.8 L513.4,295.9 Z"/>
+<path class="land" d="M446.7,628.7 L372.6,653.6 L379.4,605.0 L419.6,579.6 L380.5,559.0 L413.3,435.2 L469.9,461.0 L469.9,574.6 L446.7,628.7 Z"/>
+<path class="land" d="M469.9,461.0 L497.6,402.4 L672.3,476.1 L980.0,276.8 L1043.3,504.4 L1013.3,532.4 L698.9,624.9 L855.6,808.3 L803.5,839.4 L777.5,900.0 L657.6,925.1 L620.3,990.3 L552.5,1045.8 L377.2,1017.2 L372.1,990.9 L450.7,700.2 L446.7,628.7 L469.9,574.6 L469.9,461.0 Z"/>
+<path class="land" d="M497.6,402.4 L494.2,401.1 L515.7,372.6 L513.4,295.9 L551.9,192.8 L637.3,121.3 L611.8,46.9 L541.1,36.9 L526.4,-109.9 L564.9,-189.4 L606.7,-231.7 L649.2,-274.5 L657.6,-383.4 L709.1,-345.3 L882.1,-400.0 L965.3,-362.8 L1094.8,-363.5 L1275.7,-437.3 L1360.0,-434.0 L1538.7,-464.7 L1458.4,-341.9 L1372.4,-293.7 L1387.1,-152.0 L1327.7,80.1 L980.0,276.8 L672.3,476.1 L497.6,402.4 Z"/>
+<path class="land" d="M377.2,1017.2 L552.5,1045.8 L620.3,990.3 L657.6,925.1 L777.5,900.0 L803.5,839.4 L855.6,808.3 L698.9,624.9 L1013.3,532.4 L1043.3,504.4 L1232.7,554.6 L1466.3,683.8 L1909.6,1049.2 L2201.4,1063.5 L2341.7,1080.8 L2380.7,1166.4 L2491.5,1161.5 L2553.2,1315.3 L2630.6,1355.7 L2657.2,1417.7 L2764.7,1491.9 L2773.7,1564.1 L2758.4,1622.4 L2778.2,1681.2 L2823.5,1729.8 L2844.4,1786.7 L2867.6,1829.2 L2915.1,1863.5 L2958.6,1851.2 L2988.6,1917.2 L2994.8,1956.8 L3054.8,2130.5 L3526.9,2216.4 L3558.6,2180.4 L3630.4,2300.5 L3525.8,2637.2 L3054.8,2803.9 L2601.8,2867.3 L2455.3,2941.9 L2342.8,3114.8 L2269.3,3142.4 L2229.7,3087.6 L2169.8,3095.9 L2017.6,3079.2 L1989.4,3062.8 L1807.8,3066.7 L1765.4,3081.4 L1701.0,3038.8 L1659.1,3119.6 L1675.0,3188.8 L1606.5,3241.2 L1585.6,3171.3 L1538.7,3121.8 L1526.2,3056.1 L1445.4,2996.9 L1361.7,2858.4 L1317.0,2722.8 L1208.4,2608.0 L1138.3,2580.5 L1034.3,2420.4 L1016.2,2302.8 L1022.9,2202.3 L933.0,2012.9 L859.5,1945.7 L774.7,1910.2 L722.7,1811.1 L731.2,1772.1 L687.6,1682.0 L641.8,1643.1 L580.7,1512.7 L484.6,1370.7 L404.9,1248.8 L326.3,1249.7 L351.1,1151.5 L357.9,1089.0 L377.2,1017.2 Z"/>
+<path class="land" d="M677.4,2300.5 L54.3,2300.5 L-554.8,2300.5 L-1186.4,2300.5 L-1186.4,1668.2 L-1186.4,1038.5 L-1233.4,892.9 L-1193.2,780.5 L-1217.5,702.1 L-1160.4,614.0 L-951.8,610.9 L-800.2,659.5 L-644.7,713.9 L-571.7,742.4 L-450.7,684.1 L-386.3,631.5 L-247.7,616.2 L-135.7,639.6 L-93.3,730.6 L-56.6,670.7 L69.0,714.2 L191.7,724.4 L269.1,678.2 L356.8,944.1 L372.1,990.9 L328.0,1063.5 L294.0,1198.7 L251.6,1291.5 L214.9,1322.5 L162.3,1265.0 L91.6,1185.7 L-20.4,927.9 L-36.8,944.1 L28.2,1134.2 L124.9,1313.5 L243.7,1587.8 L301.4,1682.6 L352.3,1780.9 L493.1,1971.9 L462.0,2001.9 L467.1,2113.1 L649.7,2265.8 L677.4,2300.5 Z"/>
+</g>
+      <g id="map-water">
+<path class="water" d="M469.1,364.9 L478.5,379.8 L480.1,396.6 L470.7,406.0 L462.8,392.9 L462.8,376.1 Z" fill="" stroke-width="1"/>
+<path class="water" d="M459.7,575.0 L472.3,613.7 L470.7,674.5 L453.4,713.0 L444.0,676.3 L445.6,617.4 Z" fill="" stroke-width="1"/>
+<path class="water" d="M475.4,406.0 L470.7,450.7 L466.0,506.5 L462.8,571.3" fill="none" stroke-width="3"/>
+</g>
+      <g id="map-terrain">
+<path class="terrain" d="M392.1,338.6 L403.1,394.8 L411.0,460.0 L415.7,525.0 L418.8,586.0 L415.7,654.2"/>
+<path class="terrain" d="M436.1,413.4 L442.4,478.6 L445.6,543.5 L444.0,608.2"/>
+<path class="terrain" d="M497.4,394.8 L510.0,450.7 L516.2,515.7 L513.1,580.5"/>
+<path class="terrain" d="M365.4,538.0 L381.2,575.0 L389.0,622.9 L387.4,670.8"/>
+</g>
+      <g id="map-routes">
+<path class="route" d="M436.1,430.2 L429.8,448.8 L426.7,452.6 L412.6,426.5"/>
+<path class="route-secondary" d="M542.9,426.5 L478.5,432.1 L436.1,430.2"/>
+</g>
+      <g id="map-labels">
+<g class="place-group" transform="translate(442.4 242.8)"><circle class="place" r="4"/><text class="place-label" x="10" y="4" text-anchor="start">Sidon</text></g>
+<g class="place-group" transform="translate(414.1 297.4)"><circle class="place" r="4"/><text class="place-label" x="10" y="4" text-anchor="start">Tyre</text></g>
+<g class="place-group" transform="translate(414.1 482.3)"><circle class="capital" r="5"/><text class="place-label" x="-10" y="-9" text-anchor="end">Samaria</text></g>
+<g class="place-group" transform="translate(436.1 430.2)"><circle class="capital" r="5"/><text class="place-label" x="10" y="-7" text-anchor="start">Jezreel</text></g>
+<g class="place-group" transform="translate(412.6 426.5)"><circle class="place" r="4"/><text class="place-label" x="-10" y="-7" text-anchor="end">Megiddo</text></g>
+<g class="place-group" transform="translate(429.8 448.8)"><circle class="place" r="4"/><text class="place-label" x="-10" y="17" text-anchor="end">Ibleam</text></g>
+<g class="place-group" transform="translate(426.7 452.6)"><rect class="uncertain" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/><text class="minor-label" x="11" y="17" text-anchor="start">Ascent of Gur</text></g>
+<g class="place-group" transform="translate(542.9 426.5)"><circle class="place" r="4"/><text class="place-label" x="10" y="-7" text-anchor="start">Ramoth-gilead</text></g>
+<g class="place-group" transform="translate(420.4 575.0)"><circle class="capital" r="5"/><text class="place-label" x="10" y="-8" text-anchor="start">Jerusalem</text></g>
+<g class="place-group" transform="translate(359.2 602.7)"><circle class="place" r="4"/><text class="place-label" x="-10" y="4" text-anchor="end">Libnah</text></g>
+<g class="place-group" transform="translate(462.8 736.8)"><rect class="uncertain" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/><text class="minor-label" x="10" y="3" text-anchor="start">Zair</text></g>
+<text class="kingdom" transform="translate(362.3 314.3) rotate(-75)" text-anchor="middle">PHOENICIA</text>
+<text class="kingdom" transform="translate(371.7 493.5) rotate(-78)" text-anchor="middle">ISRAEL</text>
+<text class="kingdom" transform="translate(373.3 641.4) rotate(-78)" text-anchor="middle">JUDAH</text>
+<text class="kingdom" transform="translate(530.4 497.2) rotate(-78)" text-anchor="middle">GILEAD</text>
+<text class="kingdom" transform="translate(459.7 780.7) rotate(-76)" text-anchor="middle">EDOM</text>
+<text class="region" transform="translate(297.9 482.3) rotate(-78)" text-anchor="middle">GREAT SEA</text>
+<text class="region" transform="translate(492.7 381.7) rotate(-78)" text-anchor="middle">Sea of Galilee</text>
+<text class="region" transform="translate(484.8 654.2) rotate(-78)" text-anchor="middle">Dead Sea</text>
+</g>
+      <g transform="translate(94 112)">
+        <path class="compass" d="M0,-20 L5,-5 L0,-9 L-5,-5 Z"/>
+        <text class="minor-label" x="0" y="-27" text-anchor="middle">N</text>
+      </g>
+      <g transform="translate(90 900)">
+        <circle class="capital" cx="0" cy="0" r="5"/><text class="legend" x="12" y="4">Royal city</text>
+        <circle class="place" cx="116" cy="0" r="4"/><text class="legend" x="127" y="4">Other place</text>
+        <rect class="uncertain" x="242" y="-4" width="8" height="8" transform="rotate(45 246 0)"/><text class="legend" x="258" y="4">Approximate location</text>
+      </g>
+      <text class="legend" x="90" y="927">Gur is located near Ibleam; Zair’s precise identification remains uncertain.</text>
+      <rect class="plaster" x="20" y="20" width="760" height="960" filter="url(#plaster-noise)"/>
+      <rect x="20" y="20" width="760" height="35" fill="url(#top-ornament)"/>
+      <rect x="20" y="945" width="760" height="35" fill="url(#top-ornament)"/>
+      <rect x="20" y="55" width="48" height="890" fill="url(#side-ornament)"/>
+      <rect x="732" y="55" width="48" height="890" fill="url(#side-ornament)"/>
+      <text class="title" x="400" y="78" text-anchor="middle">THE WORLD OF</text>
+      <text class="title" x="400" y="103" text-anchor="middle">DAUGHTER OF JEZEBEL</text>
+      <text class="subtitle" x="400" y="125" text-anchor="middle">THE KINGDOMS OF JUDAH AND ISRAEL · NINTH CENTURY BC</text>
+      <line class="title-rule" x1="244" y1="138" x2="556" y2="138"/>
+      <g transform="translate(203 99)">
+        <circle class="orn-blue" r="13"/><circle class="orn-gold" r="6"/>
+        <path class="orn-red" d="M-5 -13 L0 -21 L5 -13 L0 -8Z M-5 13 L0 21 L5 13 L0 8Z M-13 -5 L-21 0 L-13 5 L-8 0Z M13 -5 L21 0 L13 5 L8 0Z"/>
+      </g>
+      <g transform="translate(597 99)">
+        <circle class="orn-blue" r="13"/><circle class="orn-gold" r="6"/>
+        <path class="orn-red" d="M-5 -13 L0 -21 L5 -13 L0 -8Z M-5 13 L0 21 L5 13 L0 8Z M-13 -5 L-21 0 L-13 5 L-8 0Z M13 -5 L21 0 L13 5 L8 0Z"/>
+      </g>
+      <rect class="frame" x="20" y="20" width="760" height="960"/>
+      <rect class="inner-frame" x="68" y="55" width="664" height="890"/>
+    </svg>
+  </div>
+</div>
+</body></html>
